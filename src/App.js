@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Routes, Route } from 'react-router-dom';
+import { Home, Login, Public, Personal } from './containers/public/index';
+import path from './utils/path';
+import * as actions from './store/actions'
+import { useDispatch } from 'react-redux'
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(actions.getHome())
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="">
+        <Routes>
+          <Route path={path.PUBLIC} element={<Public />} >
+            <Route path={path.HOME} element={<Home />} />
+            <Route path={path.LOGIN} element={<Login />} />
+            <Route path={path.MY_MUSIC} element={<Personal />} />
+            <Route path={path.STAR} element={<Home />} />
+          </Route>
+        </Routes>
+      </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }
 
