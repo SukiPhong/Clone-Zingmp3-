@@ -1,4 +1,12 @@
-export {default as Home } from './Home';
-export {default as Public} from './Public';
-export {default as Login} from './login';
-export {default as Personal} from './Personal';
+export { default as Home } from './Home';
+export { default as Public } from './Public';
+export { default as Login } from './login';
+export { default as Personal } from './Personal';
+export { default as Album } from './Album';
+export { default as WeekChart } from './WeekChart';
+export { default as ChartZing } from './ChartZing';
+export { default as SearchPublic } from './SearchPublic';
+export { default as SearchSongs } from './SearchSongs';
+export { default as SearchAll } from './SearchAll';
+export { default as Singer } from './Singer';
+export { default as SearchPlaylist } from './SearchPlaylist';
