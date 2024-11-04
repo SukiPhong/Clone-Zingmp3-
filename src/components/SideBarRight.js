@@ -26,7 +26,7 @@ const SideBarRight = () => {
     useEffect(() => {
         isPlaying && setIsRecent(false);
     }, [isPlaying, curSongID]);
-    console.log(recentSongs);
+
     return (
         <div className="flex flex-col text-xs w-full h-full">
             <div className="h-[70px] w-full flex items-center justify-between py-[14px] px-2 gap-4">

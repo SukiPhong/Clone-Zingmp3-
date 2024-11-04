@@ -158,7 +158,6 @@ const Player = ({ setIsShowRightSidebar }) => {
         thumbRef.current.style.cssText = `right: ${100 - percent}%`;
     };
     const handleRepeatOne = () => {
-        console.log(repeatMode);
         play();
     };
     useEffect(() => {
@@ -254,10 +253,7 @@ const Player = ({ setIsShowRightSidebar }) => {
                                 repeatMode && 'text-purple-600'
                             }`}
                             onClick={() =>
-                                setRepeatMode(
-                                    (prev) => (prev === 2 ? 0 : prev + 1),
-                                    console.log(repeatMode),
-                                )
+                                setRepeatMode((prev) => (prev === 2 ? 0 : prev + 1))
                             }
                         >
                             {repeatMode === 1 ? (

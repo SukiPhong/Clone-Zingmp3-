@@ -13,7 +13,7 @@ const SearchPlaylist = () => {
         };
         fetch();
     }, [searchData]);
-    console.log({ playlist });
+
     return (
         <div className="w-full flex-col gap-8 flex px-[44px]">
             <h3>Playlist/Album</h3>

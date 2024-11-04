@@ -10,7 +10,6 @@ const RankList = ({ data, isHideAlbum, number, link }) => {
         else setListSong(data);
     }, [isShowFull, data]);
     const navigate = useNavigate();
-    console.log(link?.split('.')[0]);
     return (
         <div className="w-full ">
             <div>

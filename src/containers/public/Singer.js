@@ -16,7 +16,7 @@ const Singer = () => {
         };
         singer && fetchArtistData();
     }, [singer]);
-    console.log({ artistData });
+
     return (
         <div className="flex  flex-col  w-full  ">
             <div className="relative">

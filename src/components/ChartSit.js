@@ -79,7 +79,7 @@ const ChartSit = () => {
             intersect: false,
         },
     };
-    console.log(typeof chart, typeof chart?.times);
+
     useEffect(() => {
         const labels = chart?.times
             ?.filter((item) => +item.hour % 2 === 0)

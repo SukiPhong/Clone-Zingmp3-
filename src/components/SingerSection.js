@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import SectionItem from './SectionItem';
 
 const SingerSection = ({ data, sm }) => {
-    console.log(data?.title);
     return (
         <div className="px-[60px] mt-5 ư">
             <span className="font-bold text-xl  capitalize">{data?.title}</span>
