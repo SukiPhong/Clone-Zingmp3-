@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 const Public = () => {
     const [isShowRightSidebar, setIsShowRightSidebar] = useState(false);
     const { isLoading } = useSelector((state) => state.app);
+    const { curSongID } = useSelector((state) => state.music);
     const { singer } = useParams();
     return (
         <div className="w-full relative h-screen flex flex-col bg-main-300">
@@ -41,9 +42,11 @@ const Public = () => {
                     </div>
                 )}
             </div>
-            <div className="fixed z-50 bottom-0 left-0 right-0 h-[90px]">
-                <Player setIsShowRightSidebar={setIsShowRightSidebar} />
-            </div>
+            {curSongID && (
+                <div className="fixed z-50 bottom-0 left-0 right-0 h-[90px]">
+                    <Player setIsShowRightSidebar={setIsShowRightSidebar} />
+                </div>
+            )}
         </div>
     );
 };

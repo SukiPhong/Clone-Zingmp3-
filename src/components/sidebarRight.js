@@ -81,14 +81,16 @@ const SideBarRight = () => {
             ) : (
                 <div className="w-full flex-col flex flex-auto px-2">
                     <Scrollbars autoHide style={{ width: '100%', height: '100%' }}>
-                        <SongItem
-                            thumbnail={curSongData?.thumbnail}
-                            title={curSongData?.title}
-                            artistsNames={curSongData?.artistsNames}
-                            sid={curSongData?.encodeId}
-                            sm
-                            style="bg-main-500 text-white"
-                        />
+                        {curSongData && (
+                            <SongItem
+                                thumbnail={curSongData?.thumbnail}
+                                title={curSongData?.title}
+                                artistsNames={curSongData?.artistsNames}
+                                sid={curSongData?.encodeId}
+                                sm
+                                style="bg-main-500 text-white"
+                            />
+                        )}
                         <div className="text-black flex flex-col pt-[15px] px-2 pb-[5px]">
                             <span className="text-sm font-bold">Tiếp Theo</span>
                             <span className="opacity-70 text-xs flex gap-1">
