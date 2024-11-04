@@ -5,7 +5,7 @@ import icons from './../utils/icons';
 import moment from 'moment';
 const { BsMusicNoteBeamed } = icons;
 
-const List = ({ SongData, isHideNode }) => {
+const List = ({ SongData, isHideNode, order, flex }) => {
     const dispatch = useDispatch();
     const handleSongClick = () => {
         dispatch(actions.setCurrentSongId(SongData?.encodeId));
@@ -24,9 +24,24 @@ const List = ({ SongData, isHideNode }) => {
     return (
         <div
             onClick={handleSongClick}
-            className="flex justify-between items-center p-[10px] border-t border-[rgba(0,0,0,0.05)] hover:bg-[#DDE4E4] cursor-pointer "
+            className="flex  justify-between items-center p-[10px] border-t border-[rgba(0,0,0,0.05)] hover:bg-[#DDE4E4] cursor-pointer "
         >
-            <div className="flex gap-3 items-center flex-1">
+            <div className={`flex gap-3 items-center ${flex ? 'flex-1' : ''} `}>
+                {order && (
+                    <span
+                        className={` ${
+                            order === 1
+                                ? 'text-shadow-no1'
+                                : order === 2
+                                ? 'text-shadow-no2'
+                                : order === 3
+                                ? 'text-shadow-no3'
+                                : 'text-shadow-last'
+                        } text-main-300 text-[30px] flex justify-center items-center flex-1 w-[10%] mr-2`}
+                    >
+                        {order}
+                    </span>
+                )}
                 {!isHideNode && (
                     <span>
                         <BsMusicNoteBeamed />

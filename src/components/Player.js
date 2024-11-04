@@ -38,8 +38,10 @@ const Player = ({ setIsShowRightSidebar }) => {
     const [repeatMode, setRepeatMode] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [volume, setVolume] = useState(100);
+    const [isShowVolumd, setIsShowVolumd] = useState(false);
     const thumbRef = useRef();
     const trackRef = useRef();
+    const volumeRef = useRef();
     useEffect(() => {
         const fetchDetailSong = async () => {
             setIsLoading(false);
@@ -162,7 +164,10 @@ const Player = ({ setIsShowRightSidebar }) => {
     useEffect(() => {
         audio.volume = volume / 100;
     }, [audio, volume]);
-
+    if (volumeRef.current) {
+        volumeRef.current.style.cssText = `right:${100 - volume}%`;
+    }
+    useEffect(() => {}, [volume]);
     return (
         <div className="flex bg-main-400 px-5 h-full ">
             <div className="w-1/3 flex-auto   flex gap-3 items-center ">
@@ -285,23 +290,26 @@ const Player = ({ setIsShowRightSidebar }) => {
                 </div>
             </div>
             <div className="w-1/3 flex-auto  flex  items-center justify-end gap-3 ">
-                <div className="flex gap-2 items-center">
-                    <span
-                        onClick={() =>
-                            setVolume(
-                                (prev) => (+prev === 0 ? 70 : 0),
-                                console.log(volume),
-                            )
-                        }
+                <div
+                    className="flex gap-2 items-center"
+                    onMouseEnter={(e) => {
+                        setIsShowVolumd(true);
+                    }}
+                    onMouseLeave={() => {
+                        setIsShowVolumd(false);
+                    }}
+                >
+                    <div
+                        className={`w-[130px] h-[5px] bg-white rounded-r-full  rounded-l-full ${
+                            isShowVolumd ? 'hidden' : 'relative'
+                        }`}
                     >
-                        {+volume > 60 ? (
-                            <SlVolume2 />
-                        ) : +volume === 0 ? (
-                            <SlVolumeOff />
-                        ) : (
-                            <SlVolume1 />
-                        )}
-                    </span>
+                        <div
+                            ref={volumeRef}
+                            className="absolute left-0 right-1/2 bottom-0 top-0 bg-main-500 rounded-r-full rounded-l-full"
+                        ></div>
+                    </div>
+
                     <input
                         type="range"
                         step={1}
@@ -311,10 +319,12 @@ const Player = ({ setIsShowRightSidebar }) => {
                         onChange={(e) => {
                             setVolume(e.target.value);
                         }}
+                        className={`w-[130px]  ${isShowVolumd ? 'inline' : 'hidden'}`}
                     />
                 </div>
                 <span
-                    className="p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover: opacity-100"
+                    className="p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 
+                    hover:opacity-100"
                     onClick={() => setIsShowRightSidebar((prev) => !prev)}
                 >
                     <BsMusicNoteList />

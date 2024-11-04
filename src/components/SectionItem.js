@@ -2,7 +2,15 @@ import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsFillPlayFill, BsThreeDots } from 'react-icons/bs';
-const SectionItem = ({ link, title, thumbnail, artistNames, sortDescription, data }) => {
+const SectionItem = ({
+    link,
+    title,
+    thumbnail,
+    artistNames,
+    sortDescription,
+    data,
+    time,
+}) => {
     const navigate = useNavigate();
     const [isShow, setIsShow] = useState(false);
     return (
@@ -55,6 +63,8 @@ const SectionItem = ({ link, title, thumbnail, artistNames, sortDescription, dat
                 </span>
                 {data?.sectionId === 'h100' ? (
                     <span>{artistNames}</span>
+                ) : time ? (
+                    <span>{time}</span>
                 ) : (
                     <span>
                         {sortDescription.length >= 40

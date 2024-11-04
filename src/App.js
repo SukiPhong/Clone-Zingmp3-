@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
@@ -19,11 +19,22 @@ import {
 import path from './utils/path';
 import { useDispatch } from 'react-redux';
 import * as actions from './store/actions';
+import { apiGetChartHome } from './apis';
+import { set } from 'lodash';
 
 function App() {
     const dispatch = useDispatch();
+    const [weekChart, setWeekChart] = useState(null);
     useEffect(() => {
         dispatch(actions.getHome());
+        const fetchChartData = async () => {
+            const rs = await apiGetChartHome();
+
+            if (rs.status === 200) {
+                setWeekChart(rs.data.data.weekChart);
+            }
+        };
+        fetchChartData();
     }, []);
     return (
         <>
@@ -37,7 +48,11 @@ function App() {
                         <Route path={path.PLAYLIST__TITLE__PID} element={<Album />} />
                         <Route
                             path={path.WeekChart__TITLE__PID}
-                            element={<WeekChart />}
+                            element={
+                                <WeekChart
+                                    weekChart={weekChart && Object.values(weekChart)}
+                                />
+                            }
                         />
                         <Route path={path.HOME_SINGER} element={<Singer />} />
                         <Route path={path.ZING_CHART} element={<ChartZing />} />

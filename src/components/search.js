@@ -18,7 +18,7 @@ const Search = () => {
             window.removeEventListener('keyup', handlerSearch);
         };
     });
-    console.log(singer);
+
     const handlerSearch = async (e) => {
         if (e.keyCode === 13) {
             dispatch(actions.search(keyword));
@@ -58,7 +58,9 @@ const Search = () => {
             <input
                 type="text"
                 className={`outline-none ${
-                    singer ? 'bg-[rgba(0,0,0,0.3)]' : 'bg-[#DDE4E4]'
+                    singer
+                        ? 'bg-[rgba(0,0,0,0.3)] placeholder:text-white'
+                        : 'bg-[#DDE4E4]'
                 } py-2 px-4 w-full rounded-r-[20px] h-10 text-gray-500`}
                 placeholder="Tìm kiếm bài hát nghệ sĩ, lời bài hát..."
                 value={keyword}

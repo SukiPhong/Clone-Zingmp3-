@@ -63,3 +63,8 @@ export const apiGetArtist = (alias) =>
         method: 'get',
         params: { name: alias },
     });
+export const apiGetChartHome = () =>
+    axios({
+        url: '/charthome',
+        method: 'get',
+    });

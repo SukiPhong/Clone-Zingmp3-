@@ -22,7 +22,7 @@ const Home = () => {
         slidesToScroll: 7,
     };
     return (
-        <div className="overflow-y-auto w-full">
+        <div className="overflow-y-auto w-full ">
             <div className="w-full h-[70px]"></div>
             <SliderBanner />
 

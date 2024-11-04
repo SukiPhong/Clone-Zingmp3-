@@ -79,7 +79,7 @@ const ChartSit = () => {
             intersect: false,
         },
     };
-
+    console.log(typeof chart, typeof chart?.times);
     useEffect(() => {
         const labels = chart?.times
             ?.filter((item) => +item.hour % 2 === 0)
@@ -105,7 +105,7 @@ const ChartSit = () => {
         }
     }, [chart]);
     return (
-        <div className="px-[59px] mt-12   gap-[28px] rounded-md">
+        <div className="px-[44px] mt-12   gap-[28px] rounded-md">
             <div className="relative h-[400px]">
                 <img
                     src="/bg-chart.fd766403.jpg"

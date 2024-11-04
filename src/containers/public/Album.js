@@ -49,13 +49,10 @@ const Album = () => {
                 />
             </div>
             <Scrollbars style={{ width: '100%', height: 'calc(100vh - 150px)' }}>
-                <div className="mb-40">
-                    <span className="text-gray-400">
-                        <span>Lời tựa &nbsp;</span>
-                        <span> {playListData.sortDescription}</span>
-                    </span>
-                    <Playlist totalsDuration={playListData?.song?.totalDuration} />
-                </div>
+                <Playlist
+                    totalsDuration={playListData?.song?.totalDuration}
+                    sortDescription={playListData.sortDescription}
+                />
             </Scrollbars>
         </div>
     );
